@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Chaturbate E-stim 2B controller, An application to control the E-Stim systems 2B based on tips
-# Copyright (C) 2020  cb-stimmer
+# Nogasm E-stim 2B controller, Connects Edge-o-Matic 3000 to E-Stim systems 2B
+# Copyright (C) 2021 cb-stimmer
 
 import serial
 import sys
