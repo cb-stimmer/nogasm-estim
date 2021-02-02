@@ -1,0 +1,13 @@
+{
+  "mode": 11,
+  "power": "Y",
+  "serialPort": "/dev/ttyUSB0",
+  "nogasmURL": "ws://192.168.42.69:80/",
+  "maxMotor": 159,
+  "levels": {
+      "levelAmin": 15,
+      "levelAmax": 40,
+      "levelBmin": 20,
+      "levelBmax": 50
+  }
+}
