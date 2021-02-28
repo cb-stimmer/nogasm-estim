@@ -82,7 +82,7 @@ def init_estim():
 
 async def wsTread(treadName):
     global gVal
-    async with websockets.connect(settings["nogasmURL"]) as websocket:
+    async with websockets.connect(settings["nogasmURL"],ping_interval=None) as websocket:
         while 1:
             responce = await websocket.recv()
             responce = json.loads(responce)
