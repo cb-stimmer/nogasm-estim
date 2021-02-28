@@ -10,9 +10,13 @@ import json
 import asyncio
 import websockets
 import threading
+import argparse
+
 
 settings = dict()
 gVal = 0
+args = object()
+
 
 def load_settings():
     with open("settings.json", "r") as read_file:
@@ -23,8 +27,9 @@ def load_settings():
 def send_command(serialport, command):
     command += '\r'
     command = command.encode()
-    #print(command)
-    #return
+    if args.debug:
+        print(command)
+        return
     ser = serial.Serial(serialport, 9600,timeout=10)  # open serial port
     ser.write(command)     # write a string
     reply = ser.readline()
@@ -91,13 +96,19 @@ async def wsTread(treadName):
             if 'readings' in responce.keys():
                 gVal = responce['readings']['motor']
                 #time.sleep(1)
-        time.sleep(0.25)
+        #time.sleep(0.25)
  
 def cmdTread(treadName):
     while 1:
         set_output(gVal)
         # print("tread ",treadName," Running")
         time.sleep(0.5)
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--debug", help="enable debug mode, no serial port used",
+                    action="store_true")
+args = parser.parse_args()
+
     
 load_settings()
 
